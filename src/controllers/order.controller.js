@@ -21,16 +21,7 @@ const createOrder = async (req, res) => {
 /** Get order list */
 const getOrderList = async (req, res) => {
   try {
-    const { search, ...options } = req.query;
-    let filter = {};
-
-    if (search) {
-      filter.$or = [
-        { ammount: { $regex: search, $options: "i" } },
-        { order_address : { $regex: search, $options: "i" } },
-      ];
-    }
-    const getList = await orderService.getOrderList(filter, options);
+    const getList = await orderService.getOrderList();
 
     res.status(200).json({
       success: true,

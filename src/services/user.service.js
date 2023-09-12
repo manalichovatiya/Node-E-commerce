@@ -6,8 +6,7 @@ const createUser = async (reqBody) => {
 };
 
 // Get user list
-const getUserList = async (filter, options) => {
-  // const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
+const getUserList = async () => {
 //   return Users.find();
   return Users.find({$or:[{is_active:false}]});
 };

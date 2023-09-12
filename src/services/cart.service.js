@@ -6,7 +6,7 @@ const createcart = async (reqBody) => {
 };
 
 // Get cart list
-const getcartList = async (filter,options) => {
+const getcartList = async () => {
     return Cart.find().populate("product");
 };
 

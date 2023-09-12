@@ -21,16 +21,7 @@ const createsubCategory = async (req, res) => {
 /** Get subcategory list */
 const getsubCategoryList = async (req, res) => {
   try {
-    const { search, ...options } = req.query;
-    let filter = {};
-
-    if (search) {
-      filter.$or = [
-        { subCategory_name: { $regex: search, $options: "i" } },
-        { subcategory_description : { $regex: search, $options: "i" } },
-      ];
-    }
-    const getList = await subcategoryService.getsubCategoryList(filter, options);
+    const getList = await subcategoryService.getsubCategoryList();
 
     res.status(200).json({
       success: true,

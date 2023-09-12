@@ -21,17 +21,7 @@ const createCategory = async (req, res) => {
 /** Get category list */
 const getCategoryList = async (req, res) => {
   try {
-    const { search, ...options } = req.query;
-    let filter = {};
-
-    if (search) {
-      filter.$or = [
-        { Category_name: { $regex: search, $options: "i" } },
-        { category_description : { $regex: search, $options: "i" } },
-      ];
-    }
-    const getList = await categoryService.getCategoryList(filter, options);
-
+    const getList = await categoryService.getCategoryList();
     res.status(200).json({
       success: true,
       message: "Get category list successfully!",

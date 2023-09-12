@@ -6,7 +6,7 @@ const createsubchildCategory = async (reqBody) => {
 };
 
 // Get subchildcategory list
-const getsubchildCategoryList = async (filter,options) => {
+const getsubchildCategoryList = async () => {
     return Subchildcategory.find().populate("Subcategory");
 };
 

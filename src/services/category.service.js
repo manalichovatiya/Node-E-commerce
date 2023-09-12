@@ -6,7 +6,7 @@ const createCategory = async (reqBody) => {
 };
 
 // Get category list
-const getCategoryList = async (filter,options) => {
+const getCategoryList = async () => {
     return Category.find();
 };
 

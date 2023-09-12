@@ -6,7 +6,7 @@ const createOrderdetails = async (reqBody) => {
 };
 
 // Get OrderDetails list
-const getOrderdetailsList = async (filter, options) => {
+const getOrderdetailsList = async () => {
   return OrderDetails.find().populate("Order_id");
   // return OrderDetails.find({$or:[{is_active:false}]});
 };

@@ -21,16 +21,7 @@ const createsubchildCategory = async (req, res) => {
 /** Get subchildcategory list */
 const getsubchildCategoryList = async (req, res) => {
   try {
-    const { search, ...options } = req.query;
-    let filter = {};
-
-    if (search) {
-      filter.$or = [
-        { subchildCategory_name: { $regex: search, $options: "i" } },
-        { subchildcategory_description : { $regex: search, $options: "i" } },
-      ];
-    }
-    const getList = await subchildcategoryService.getsubchildCategoryList(filter, options);
+    const getList = await subchildcategoryService.getsubchildCategoryList();
 
     res.status(200).json({
       success: true,

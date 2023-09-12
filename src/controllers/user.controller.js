@@ -21,10 +21,7 @@ const createUser = async (req, res) => {
 /** Get user list */
 const getUserList = async (req, res) => {
   try {
-    const { search, ...options } = req.query;
-    let filter = {};
-    const getList = await userService.getUserList(filter, options);
-
+    const getList = await userService.getUserList();
     res.status(200).json({
       success: true,
       message: "Get user list successfully!",
@@ -42,7 +39,6 @@ const getUserDetails = async (req, res) => {
     if (!getDetails) {
       throw new Error("User not found!");
     }
-
     res.status(200).json({
       success: true,
       message: "User details get successfully!",
@@ -62,7 +58,6 @@ const updateDetails = async (req, res) => {
     if (!userExists) {
       throw new Error("User not found!");
     }
-
     await userService.updateDetails(userId, reqBody);
 
     res.status(200)

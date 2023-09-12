@@ -21,17 +21,7 @@ const createcart = async (req, res) => {
 /** Get cart list */
 const getcartList = async (req, res) => {
   try {
-    const { search, ...options } = req.query;
-    let filter = {};
-
-    if (search) {
-      filter.$or = [
-        { total_items: { $regex: search, $options: "i" } },
-        { total_price : { $regex: search, $options: "i" } },
-      ];
-    }
-    const getList = await cartService.getcartList(filter, options);
-
+    const getList = await cartService.getcartList();
     res.status(200).json({
       success: true,
       message: "Get cart list successfully!",
